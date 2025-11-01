@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5u7p580no14i"]
+[gd_scene load_steps=5 format=3 uid="uid://b5u7p580no14i"]
 
-[ext_resource type="Script" uid="uid://djh5oqibdpuat" path="res://Script/quit.gd" id="1_b23qx"]
+[ext_resource type="Texture2D" uid="uid://cj4hm73rfu1n" path="res://Assets/background.png" id="1_b23qx"]
+[ext_resource type="AudioStream" uid="uid://cveq3bwgqql20" path="res://Assets/Sounds/menu-music.wav" id="1_eas8t"]
 
 [sub_resource type="GDScript" id="GDScript_eas8t"]
 script/source = "extends Node
@@ -12,9 +13,31 @@ func _on_quit_pressed() -> void:
 	get_tree().quit()
 "
 
+[sub_resource type="GDScript" id="GDScript_u2k45"]
+script/source = "extends Button
+"
+
 [node name="Node2D" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CanvasLayer"]
+stream = ExtResource("1_eas8t")
+autoplay = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -779.0
+offset_top = -413.00003
+offset_right = 934.0
+offset_bottom = 580.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9062219, 0.9062219)
+texture = ExtResource("1_b23qx")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 8
@@ -48,7 +71,7 @@ text = "НАСТРОЙКИ"
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "ВЫХОД"
-script = ExtResource("1_b23qx")
+script = SubResource("GDScript_u2k45")
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/menu/start" to="CanvasLayer/MarginContainer/menu" method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/menu/quit" to="CanvasLayer/MarginContainer/menu" method="_on_quit_pressed"]
