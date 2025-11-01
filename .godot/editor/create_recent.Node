@@ -1,9 +1,10 @@
-AudioStreamPlayer2D
-TextureRect
+GridContainer
 Button
-VBoxContainer
 MarginContainer
+AudioStreamPlayer2D
 CanvasLayer
+TextureRect
+VBoxContainer
 Camera2D
 XRCamera3D
 XROrigin3D
@@ -11,5 +12,3 @@ AudioStreamPlayer
 TouchScreenButton
 Node2D
 Area2D
-CollisionShape2D
-Sprite2D
