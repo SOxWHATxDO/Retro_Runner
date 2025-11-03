@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Runer90x_0"
-run/main_scene="uid://cugk74kvjekvi"
+run/main_scene="uid://b5u7p580no14i"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://Assets/icon.svg"
+
+[autoload]
+
+MenuMusic="*res://Scene/MenuMusic.tscn"
 
 [display]
 

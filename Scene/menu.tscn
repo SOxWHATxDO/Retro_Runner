@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5u7p580no14i"]
+
+[ext_resource type="Texture2D" uid="uid://cj4hm73rfu1n" path="res://Assets/background.png" id="1_b23qx"]
+
+[sub_resource type="GDScript" id="GDScript_eas8t"]
+script/source = "extends Node
+
+func _on_start_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://Scene/levels.tscn\")
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
+"
+
+[sub_resource type="GDScript" id="GDScript_u2k45"]
+script/source = "extends Button
+"
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -779.0
+offset_top = -413.00003
+offset_right = 934.0
+offset_bottom = 580.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9062219, 0.9062219)
+texture = ExtResource("1_b23qx")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -89.5
+offset_right = 216.0
+offset_bottom = 185.88464
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="menu" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+script = SubResource("GDScript_eas8t")
+
+[node name="start" type="Button" parent="CanvasLayer/MarginContainer/menu"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_font_sizes/font_size = 32
+text = "ИГРАТЬ"
+
+[node name="settings" type="Button" parent="CanvasLayer/MarginContainer/menu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "НАСТРОЙКИ"
+
+[node name="quit" type="Button" parent="CanvasLayer/MarginContainer/menu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "ВЫХОД"
+script = SubResource("GDScript_u2k45")
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/menu/start" to="CanvasLayer/MarginContainer/menu" method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/menu/quit" to="CanvasLayer/MarginContainer/menu" method="_on_quit_pressed"]

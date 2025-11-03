@@ -37,6 +37,7 @@ var max_visible_distance: float
 @export var death_strip_width: float = 20.0  # Ширина зеленой полоски
 
 func _ready():
+	MenuMusic.stop()
 	# Устанавливаем альбомный режим для мобильных устройств
 	if OS.get_name() == "Android" or OS.get_name() == "iOS":
 		DisplayServer.screen_set_orientation(DisplayServer.SCREEN_LANDSCAPE)
