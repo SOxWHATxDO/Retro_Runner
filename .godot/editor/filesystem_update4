@@ -1,6 +1,8 @@
-res://Scene/menu.tscn
-res://Scene/main_scene.tscn
-res://Shaders/restart.gdshader
-res://Script/camera_vr.gd
-res://Script/InnerTunnel_.gd
+res://Script/levels.gd
 res://Scene/levels.tscn
+res://Shaders/restart.gdshader
+res://Script/InnerTunnel_2.gd
+res://Scene/main_scene2.tscn
+res://Scene/menu.tscn
+res://Scene/main_scene3.tscn
+res://Script/InnerTunnel_3.gd

@@ -19,11 +19,11 @@ func _on_back_pressed():
 
 
 func _on__pressed_2():
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://Scene/main_scene2.tscn")
 
 
 func _on__pressed_3():
-	pass # Replace with function body.
+		get_tree().change_scene_to_file("res://Scene/main_scene3.tscn")
 
 
 func _on__pressed_4():

@@ -59,10 +59,12 @@ theme_override_constants/separation = 4
 
 [node name="restart" type="Button" parent="HBoxContainer/SubViewportContainer/SubViewport/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "RESTART"
 
 [node name="menu" type="Button" parent="HBoxContainer/SubViewportContainer/SubViewport/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "MENU"
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="HBoxContainer"]

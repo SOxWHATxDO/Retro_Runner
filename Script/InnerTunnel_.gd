@@ -5,8 +5,8 @@ extends Node2D
 @export var segment_length: float = 10.0
 @export var tunnel_radius: float = 400.0
 @export var movement_speed: float = 400.0
-@export var rotation_sensitivity_mobile: float = 3.2
-@export var rotation_sensitivity_desktop: float = 0.12
+@export var rotation_sensitivity_mobile: float = -1.0
+@export var rotation_sensitivity_desktop: float = 0.1
 
 # Настройки препятствий
 @export var obstacle_spawn_interval: float = 1.5
@@ -102,10 +102,10 @@ func handle_input(delta):
 	
 	if OS.get_name() == "Android" or OS.get_name() == "iOS":
 		# Используем гироскоп для мобильных устройств
-		var accelerometer = Input.get_accelerometer()
+		var accelerometer = Input.get_accelerometer() 
 		if accelerometer:
-			current_tilt = accelerometer.x * rotation_sensitivity_mobile
-			rotation_angle += current_tilt * delta * 1.0
+			current_tilt = accelerometer.x * rotation_sensitivity_mobile 
+			rotation_angle += current_tilt * delta * 0.7
 	else:
 		var keyboard_input = Input.get_axis("ui_right", "ui_left")
 		current_tilt = keyboard_input
