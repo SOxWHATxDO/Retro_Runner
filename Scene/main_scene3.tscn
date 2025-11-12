@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3 uid="uid://5rmp45n88tw6"]
+
+[ext_resource type="Script" uid="uid://bnv1p2uxqkry2" path="res://Script/camera_vr.gd" id="1_lrpit"]
+[ext_resource type="Script" uid="uid://4w5pveccy32s" path="res://Script/InnerTunnel_3.gd" id="2_lrpit"]
+[ext_resource type="AudioStream" uid="uid://nbdu0ri8o7jg" path="res://Assets/Sounds/What_I_ve_Done_8_Bit_Tribute_to_Chester_Bennington_RIP___Linkin.wav" id="3_6bc0g"]
+[ext_resource type="Shader" uid="uid://dv633k0xmuenm" path="res://Shaders/restart.gdshader" id="4_3i6d7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lttqn"]
+resource_local_to_scene = true
+resource_name = "цвет "
+shader = ExtResource("4_3i6d7")
+
+[node name="SceneVR" type="Node"]
+script = ExtResource("1_lrpit")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(640, 720)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="HBoxContainer/SubViewportContainer/SubViewport"]
+anchor_mode = 0
+
+[node name="InnerTunnel" type="Node2D" parent="HBoxContainer/SubViewportContainer/SubViewport"]
+script = ExtResource("2_lrpit")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HBoxContainer/SubViewportContainer/SubViewport/InnerTunnel"]
+stream = ExtResource("3_6bc0g")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/SubViewportContainer/SubViewport"]
+material = SubResource("ShaderMaterial_lttqn")
+use_parent_material = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -53.0
+offset_right = 58.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/SubViewportContainer/SubViewport/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="restart" type="Button" parent="HBoxContainer/SubViewportContainer/SubViewport/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "RESTART"
+
+[node name="menu" type="Button" parent="HBoxContainer/SubViewportContainer/SubViewport/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "MENU"
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/SubViewportContainer2"]
+handle_input_locally = false
+size = Vector2i(640, 720)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="HBoxContainer/SubViewportContainer2/SubViewport"]
+position = Vector2(1, 0)
+anchor_mode = 0
+
+[connection signal="draw" from="HBoxContainer/SubViewportContainer/SubViewport/MarginContainer" to="." method="_on_margin_container_draw"]
+[connection signal="hidden" from="HBoxContainer/SubViewportContainer/SubViewport/MarginContainer" to="." method="_on_margin_container_hidden"]
+[connection signal="pressed" from="HBoxContainer/SubViewportContainer/SubViewport/MarginContainer/VBoxContainer/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="HBoxContainer/SubViewportContainer/SubViewport/MarginContainer/VBoxContainer/menu" to="." method="_on_menu_pressed"]

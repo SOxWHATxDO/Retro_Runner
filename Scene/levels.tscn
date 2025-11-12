@@ -1,25 +1,47 @@
-[gd_scene load_steps=2 format=3 uid="uid://0355k0qs5s47"]
+[gd_scene load_steps=3 format=3 uid="uid://0355k0qs5s47"]
 
+[ext_resource type="Texture2D" uid="uid://cj4hm73rfu1n" path="res://Assets/background.png" id="2_7p1dl"]
 [ext_resource type="Script" uid="uid://36jnm7n8b37e" path="res://Script/levels.gd" id="2_aslya"]
 
 [node name="Node2D" type="Node2D"]
 scale = Vector2(0.7126862, 0.7126862)
 script = ExtResource("2_aslya")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -143.12048
+offset_top = -510.74374
+offset_right = 1569.8795
+offset_bottom = 1202.2562
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.214131, 1.1777079)
+texture = ExtResource("2_7p1dl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 51.91626
+offset_top = 53.319393
+offset_right = 358.91626
+offset_bottom = 423.31946
+scale = Vector2(0.49114496, 0.21100107)
+color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_direction = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 645.44543
-offset_top = 305.88498
-offset_right = 952.9855
-offset_bottom = 676.208
+anchor_bottom = 0.5
+offset_left = 632.817
+offset_top = 321.31952
+offset_right = 940.35706
+offset_bottom = 691.6426
 grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(1.630518, 1.4170814)
+grow_vertical = 2
+scale = Vector2(1.6785688, 1.0453565)
 size_flags_horizontal = 6
 size_flags_vertical = 6
 size_flags_stretch_ratio = 0.0
@@ -49,42 +71,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "3"
 
-[node name="4" type="Button" parent="MarginContainer/GridContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "4"
-
-[node name="5" type="Button" parent="MarginContainer/GridContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "5"
-
-[node name="6" type="Button" parent="MarginContainer/GridContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "6"
-
-[node name="7" type="Button" parent="MarginContainer/GridContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "7"
-
-[node name="8" type="Button" parent="MarginContainer/GridContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "8"
-
-[node name="9" type="Button" parent="MarginContainer/GridContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "9"
-
 [node name="back" type="Button" parent="."]
 offset_left = 71.56026
 offset_top = 68.75396
@@ -99,10 +85,4 @@ text = "НАЗАД"
 [connection signal="pressed" from="MarginContainer/GridContainer2/1" to="." method="_on__pressed"]
 [connection signal="pressed" from="MarginContainer/GridContainer2/2" to="." method="_on__pressed_2"]
 [connection signal="pressed" from="MarginContainer/GridContainer2/3" to="." method="_on__pressed_3"]
-[connection signal="pressed" from="MarginContainer/GridContainer2/4" to="." method="_on__pressed_4"]
-[connection signal="pressed" from="MarginContainer/GridContainer2/5" to="." method="_on__pressed_5"]
-[connection signal="pressed" from="MarginContainer/GridContainer2/6" to="." method="_on__pressed_6"]
-[connection signal="pressed" from="MarginContainer/GridContainer2/7" to="." method="_on__pressed_7"]
-[connection signal="pressed" from="MarginContainer/GridContainer2/8" to="." method="_on__pressed_8"]
-[connection signal="pressed" from="MarginContainer/GridContainer2/9" to="." method="_on__pressed_9"]
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]

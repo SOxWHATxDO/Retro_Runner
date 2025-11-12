@@ -24,13 +24,13 @@ script/source = "extends Button
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -223.99998
-offset_top = -356.0
-offset_right = 209.0
-offset_bottom = 637.0
+offset_left = -52.0
+offset_top = -318.0
+offset_right = 381.0
+offset_bottom = 675.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1, 0.85)
+scale = Vector2(0.8086719, 0.78441226)
 texture = ExtResource("1_b23qx")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
@@ -39,15 +39,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -220.0
-offset_top = -102.0
-offset_right = 212.0
-offset_bottom = 173.38464
+offset_left = -216.0
+offset_top = -137.69232
+offset_right = 216.0
+offset_bottom = 137.69232
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="menu" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_constants/separation = 10
 script = SubResource("GDScript_eas8t")
 
@@ -56,11 +57,6 @@ layout_mode = 2
 theme_override_constants/h_separation = 20
 theme_override_font_sizes/font_size = 32
 text = "ИГРАТЬ"
-
-[node name="settings" type="Button" parent="CanvasLayer/MarginContainer/menu"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "НАСТРОЙКИ"
 
 [node name="quit" type="Button" parent="CanvasLayer/MarginContainer/menu"]
 layout_mode = 2

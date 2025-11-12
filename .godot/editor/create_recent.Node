@@ -1,3 +1,8 @@
+ColorRect
+TextureRect
+MarginContainer
+Button
+VBoxContainer
 CanvasLayer
 Node2D
 Camera2D
@@ -6,9 +11,5 @@ SubViewportContainer
 HBoxContainer
 Node
 GridContainer
-Button
-MarginContainer
 AudioStreamPlayer2D
-TextureRect
-VBoxContainer
 XRCamera3D

@@ -18,3 +18,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
+
+
+func _on_menu_pressed() -> void:
+	MenuMusic.play()
+	get_tree().change_scene_to_file("res://Scene/levels.tscn")
+
+
+func _on_restart_pressed() -> void:
+	get_tree().reload_current_scene()

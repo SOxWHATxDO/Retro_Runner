@@ -5,8 +5,8 @@ extends Node2D
 @export var segment_length: float = 10.0
 @export var tunnel_radius: float = 400.0
 @export var movement_speed: float = 400.0
-@export var rotation_sensitivity_mobile: float = 3.2
-@export var rotation_sensitivity_desktop: float = 0.12
+@export var rotation_sensitivity_mobile: float = -1.0
+@export var rotation_sensitivity_desktop: float = 0.1
 
 # Настройки препятствий
 @export var obstacle_spawn_interval: float = 1.5
@@ -36,7 +36,10 @@ var max_visible_distance: float
 # Настройки зеленой полоски (зоны смерти)
 @export var death_strip_width: float = 20.0  # Ширина зеленой полоски
 
+var time_out = 0.0
+
 func _ready():
+	$"/root/SceneVR/HBoxContainer/SubViewportContainer/SubViewport/MarginContainer".visible = false
 	MenuMusic.stop()
 	# Устанавливаем альбомный режим для мобильных устройств
 	if OS.get_name() == "Android" or OS.get_name() == "iOS":
@@ -99,10 +102,10 @@ func handle_input(delta):
 	
 	if OS.get_name() == "Android" or OS.get_name() == "iOS":
 		# Используем гироскоп для мобильных устройств
-		var accelerometer = Input.get_accelerometer()
+		var accelerometer = Input.get_accelerometer() 
 		if accelerometer:
-			current_tilt = accelerometer.x * rotation_sensitivity_mobile
-			rotation_angle += current_tilt * delta * 2.0
+			current_tilt = accelerometer.x * rotation_sensitivity_mobile 
+			rotation_angle += current_tilt * delta * 0.7
 	else:
 		var keyboard_input = Input.get_axis("ui_right", "ui_left")
 		current_tilt = keyboard_input
@@ -121,7 +124,7 @@ func handle_obstacle_spawning(delta):
 	obstacle_timer -= delta
 	
 	# Спавним новое препятствие, если пришло время и не превышен лимит
-	if obstacle_timer <= 0 and obstacles.size() < max_obstacles:
+	if (obstacle_timer <= 0 and obstacles.size() < max_obstacles and time_out >= 700.0):
 		spawn_obstacle()
 		# Случайный интервал для разнообразия
 		obstacle_timer = obstacle_spawn_interval * randf_range(0.8, 1.2)
@@ -191,6 +194,7 @@ func get_current_bottom_side() -> int:
 	return int(adjusted_angle / (TAU / 6)) % 6
 
 func _draw():
+	time_out += 1.0
 	# Рисуем фон (серый)
 	draw_rect(get_viewport().get_visible_rect(), Color(0.3, 0.3, 0.3))
 	
@@ -199,6 +203,7 @@ func _draw():
 	
 	# Рисуем зеленую полоску (зону смерти) в начале туннеля
 	draw_death_strip()
+	
 	
 	# Рисуем препятствия
 	for obstacle in obstacles:
@@ -370,6 +375,7 @@ func draw_obstacle(obstacle: Dictionary):
 	draw_polyline(points, Color(0.5, 0.0, 0.0), 2.0)
 
 func game_over():
+	$"/root/SceneVR/HBoxContainer/SubViewportContainer/SubViewport/MarginContainer".visible = true
 	is_game_running = false
 	movement_speed = 0.0
 	$AudioStreamPlayer.stop()
